@@ -36,7 +36,7 @@ gemini/
 3. 克隆项目并安装依赖：
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Duducoco/GeminiGradio.git
 cd gemini
 uv sync
 ```
