@@ -1,10 +1,9 @@
 """UI 事件处理函数模块"""
 
-from typing import List, Optional, Tuple
+from typing import List, Tuple
 import gradio as gr
 
 from generator import get_generator, switch_provider, get_current_provider
-from config import Config
 from utils import process_input_images, extract_image_paths
 
 
@@ -74,7 +73,7 @@ def generate_images(
             for i, p in enumerate(prompts[:num_images]):
                 status += f"  图片 {i+1}: {p[:50]}{'...' if len(p) > 50 else ''}\n"
         if paths:
-            status += f"\n保存路径:\n" + "\n".join(paths)
+            status += "\n保存路径:\n" + "\n".join(paths)
         if messages:
             status += "\n\n" + "\n".join(messages)
 

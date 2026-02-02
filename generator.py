@@ -4,14 +4,14 @@ import os
 import io
 import asyncio
 from datetime import datetime
-from typing import List, Optional, Tuple, Dict
+from typing import List, Optional, Tuple
 
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 from PIL import Image
 
-from config import Config, ProviderConfig
+from config import Config
 
 # 加载环境变量
 load_dotenv()
