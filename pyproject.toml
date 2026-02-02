@@ -1,0 +1,16 @@
+[project]
+name = "gemini-image-generator"
+version = "0.1.0"
+description = "Gemini 图片生成器 - 使用 Google Gemini AI 生成精美图片"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "google>=3.0.0",
+    "google-genai>=1.52.0",
+    "gradio>=6.4.0",
+    "pillow>=12.0.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.scripts]
+gemini-gen = "main:main"
