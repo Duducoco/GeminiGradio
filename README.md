@@ -37,7 +37,7 @@ gemini/
 
 ```bash
 git clone https://github.com/Duducoco/GeminiGradio.git
-cd gemini
+cd GeminiGradio
 uv sync
 ```
 
