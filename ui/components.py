@@ -64,13 +64,23 @@ def create_prompt_inputs():
             label="分辨率"
         )
 
+    with gr.Row():
+        image_max_size = gr.Slider(
+            minimum=100,
+            maximum=20480,
+            value=Config.IMAGE_MAX_SIZE_KB,
+            step=100,
+            label="参考图片最大尺寸 (KB)",
+            info="上传的参考图片将被压缩到此大小以下"
+        )
+
     use_individual_prompts = gr.Checkbox(
         label="🎯 为每张图片使用独立提示词",
         value=False,
         info="启用后可以为每张图片指定不同的提示词"
     )
 
-    return prompt_input, num_images, aspect_ratio, resolution, use_individual_prompts
+    return prompt_input, num_images, aspect_ratio, resolution, image_max_size, use_individual_prompts
 
 
 def create_individual_prompts():

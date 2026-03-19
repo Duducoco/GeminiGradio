@@ -179,7 +179,8 @@ class GeminiImageGenerator:
         index: int = 0,
         input_images: Optional[List[Image.Image]] = None,
         aspect_ratio: Optional[str] = None,
-        resolution: Optional[str] = None
+        resolution: Optional[str] = None,
+        image_max_size_kb: Optional[int] = None
     ) -> Tuple[int, Optional[Image.Image], str]:
         """异步生成单张图片"""
         if aspect_ratio is None:
@@ -193,7 +194,7 @@ class GeminiImageGenerator:
             # 添加输入图片
             if input_images:
                 for img in input_images:
-                    compressed = self.compress_image(img)
+                    compressed = self.compress_image(img, image_max_size_kb)
                     contents.append(compressed)
 
             # 添加文本提示
@@ -239,6 +240,7 @@ class GeminiImageGenerator:
         input_images: Optional[List[Image.Image]] = None,
         aspect_ratio: Optional[str] = None,
         resolution: Optional[str] = None,
+        image_max_size_kb: Optional[int] = None,
         progress_callback=None
     ) -> Tuple[List[Image.Image], List[str], List[str]]:
         """并行生成多张图片，支持每张图片使用不同的prompt"""
@@ -258,7 +260,8 @@ class GeminiImageGenerator:
                 index=i,
                 input_images=input_images,
                 aspect_ratio=aspect_ratio,
-                resolution=resolution
+                resolution=resolution,
+                image_max_size_kb=image_max_size_kb
             )
             for i in range(num_images)
         ]
@@ -295,6 +298,7 @@ class GeminiImageGenerator:
         input_images: Optional[List[Image.Image]] = None,
         aspect_ratio: Optional[str] = None,
         resolution: Optional[str] = None,
+        image_max_size_kb: Optional[int] = None,
         progress_callback=None
     ) -> Tuple[List[Image.Image], List[str], List[str]]:
         """生成多张图片（同步包装器，内部使用异步并行）"""
@@ -312,6 +316,7 @@ class GeminiImageGenerator:
                             input_images=input_images,
                             aspect_ratio=aspect_ratio,
                             resolution=resolution,
+                            image_max_size_kb=image_max_size_kb,
                             progress_callback=progress_callback
                         )
                     )
@@ -324,6 +329,7 @@ class GeminiImageGenerator:
                         input_images=input_images,
                         aspect_ratio=aspect_ratio,
                         resolution=resolution,
+                        image_max_size_kb=image_max_size_kb,
                         progress_callback=progress_callback
                     )
                 )
@@ -335,6 +341,7 @@ class GeminiImageGenerator:
                     input_images=input_images,
                     aspect_ratio=aspect_ratio,
                     resolution=resolution,
+                    image_max_size_kb=image_max_size_kb,
                     progress_callback=progress_callback
                 )
             )

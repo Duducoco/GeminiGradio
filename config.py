@@ -36,11 +36,11 @@ class ProviderConfig:
 class Config:
     """应用配置"""
 
-    MODEL = "gemini-3-pro-image-preview"
+    MODEL = "gemini-3.1-flash-image-preview"
     DEFAULT_ASPECT_RATIO = "2:3"
     DEFAULT_RESOLUTION = "4K"
     RESULTS_DIR = "results"
-    IMAGE_MAX_SIZE_KB = 300
+    IMAGE_MAX_SIZE_KB = 1024*10
 
     # 可选的宽高比
     ASPECT_RATIOS = [

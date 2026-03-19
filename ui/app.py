@@ -41,7 +41,7 @@ def create_ui() -> gr.Blocks:
                 # 提示词输入区域
                 (
                     prompt_input, num_images, aspect_ratio,
-                    resolution, use_individual_prompts
+                    resolution, image_max_size, use_individual_prompts
                 ) = create_prompt_inputs()
 
                 # 独立提示词区域
@@ -125,7 +125,7 @@ def create_ui() -> gr.Blocks:
             fn=generate_images,
             inputs=[
                 prompt_input, num_images, aspect_ratio, resolution,
-                use_individual_prompts,
+                image_max_size, use_individual_prompts,
                 prompt_1, prompt_2, prompt_3, prompt_4,
                 prompt_5, prompt_6, prompt_7, prompt_8,
                 input_images

@@ -12,6 +12,7 @@ def generate_images(
     num_images: int,
     aspect_ratio: str,
     resolution: str,
+    image_max_size: int,
     use_individual_prompts: bool,
     prompt_1: str,
     prompt_2: str,
@@ -26,6 +27,7 @@ def generate_images(
 ) -> Tuple[List[str], str, List[str]]:
     """Gradio 接口函数：生成图片"""
     num_images = int(num_images)
+    image_max_size = int(image_max_size)
 
     # 构建prompts列表
     if use_individual_prompts:
@@ -63,6 +65,7 @@ def generate_images(
             input_images=processed_images,
             aspect_ratio=aspect_ratio,
             resolution=resolution,
+            image_max_size_kb=image_max_size,
             progress_callback=lambda p, msg: progress(p, desc=msg)
         )
 
